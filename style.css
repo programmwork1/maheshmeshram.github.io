@@ -14,43 +14,61 @@ body {
   overflow-x: hidden;
 }
 
+/* Header with background image */
 header {
-  background: #004080;
+  background: url('background.jpg') no-repeat center center/cover;
   color: white;
   text-align: center;
-  padding: 3rem 1rem;
+  padding: 6rem 1rem;
+  position: relative;
 }
 
-header img {
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 1rem;
-  border: 4px solid white;
-  opacity: 0;
-  transform: scale(0.8);
+/* Header with background image */
+header {
+  background: url('https://www.cafs.in/_next/image?url=https%3A%2F%2Fadmin.cafs.in%2Fuploads%2F5000_X_4000_Hyderabad_358336a29d.jpg&w=1200&q=90') no-repeat center center/cover;
+  color: white;
+  text-align: center;
+  position: relative;
+}
+
+/* Overlay for readability */
+header::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.4); /* semi-transparent overlay */
+  z-index: 0;
+}
+
+header .header-content {
+  position: relative; /* above overlay */
+  z-index: 1;
+  display: inline-block;
+  padding: 1rem 2rem;
+  border-radius: 10px;
   animation: fadeScale 1s forwards;
 }
 
-header h1 {
-  margin: 0.2rem 0;
-  font-size: 2rem;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: slideUp 1s forwards;
-  animation-delay: 0.5s;
+/* Home page header size (larger) */
+body.home header {
+  padding: 8rem 1rem;
 }
 
-header p {
-  margin: 0.3rem 0;
-  font-style: italic;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: slideUp 1s forwards;
-  animation-delay: 0.7s;
+/* Subpages header size (smaller) */
+body.subpage header {
+  padding: 5rem 1rem;
 }
 
+/* Profile image */
+header .header-content img.profile-img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto 1rem;
+  border: 3px solid #00ccff;
+}
 /* Navbar */
 nav {
   background: #00264d;
@@ -104,7 +122,7 @@ nav {
   width: 100%;
 }
 
-/* Hamburger */
+/* Hamburger menu */
 .hamburger {
   display: none;
   font-size: 2rem;
@@ -112,7 +130,7 @@ nav {
   color: white;
 }
 
-/* Responsive */
+/* Responsive Navbar */
 @media (max-width: 768px) {
   .nav-links {
     display: none;
@@ -153,6 +171,7 @@ section h2 {
   transition: all 0.8s ease;
 }
 
+/* Skills section */
 .skills-list {
   display: flex;
   flex-wrap: wrap;
@@ -168,9 +187,18 @@ section h2 {
   font-size: 0.9rem;
   opacity: 0;
   transform: translateY(20px);
-  transition: all 0.5s ease;
+  transition: all 0.3s ease, transform 0.3s ease;
+  cursor: default;
 }
 
+.skills-list span:hover {
+  background: #00ccff;
+  color: #00264d;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Contact section */
 .contact-info {
   text-align: center;
 }
@@ -182,6 +210,7 @@ section h2 {
   margin: 0.4rem 0;
 }
 
+/* Resume button */
 .resume-link {
   display: flex;
   justify-content: center;
@@ -202,6 +231,7 @@ section h2 {
   background: #0066cc;
 }
 
+/* Footer */
 footer {
   background: #00264d;
   color: white;
@@ -223,4 +253,23 @@ footer {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* Work & Education details */
+.work-profile, .education-profile {
+  margin-top: 2rem;
+}
+
+.work-profile h3, .education-profile h3 {
+  color: #004080;
+  margin-bottom: 0.3rem;
+}
+
+.work-profile p, .education-profile p, .work-profile li, .education-profile li {
+  margin-bottom: 0.5rem;
+}
+
+ul {
+  padding-left: 1.2rem;
+  margin-bottom: 1rem;
 }
