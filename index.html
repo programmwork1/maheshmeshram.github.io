@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mahesh Meshram | Air Catering Officer</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f9fafc;
+      color: #333;
+      line-height: 1.6;
+    }
+    header {
+      background: #004080;
+      color: white;
+      text-align: center;
+      padding: 3rem 1rem;
+    }
+    header img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+      border: 4px solid white;
+    }
+    header h1 {
+      margin: 0.2rem 0;
+      font-size: 2rem;
+    }
+    header p {
+      margin: 0.3rem 0;
+      font-style: italic;
+    }
+    nav {
+      background: #00264d;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 0.7rem;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    section {
+      padding: 3rem 1rem;
+      max-width: 900px;
+      margin: auto;
+    }
+    section h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: #004080;
+    }
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+    .skills-list span {
+      background: #004080;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+    }
+    .contact-info {
+      text-align: center;
+    }
+    .contact-info a {
+      display: block;
+      color: #004080;
+      text-decoration: none;
+      margin: 0.4rem 0;
+    }
+    .resume-link {
+      display: flex;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+    .resume-link a {
+      background: #004080;
+      color: white;
+      padding: 0.7rem 1.5rem;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    .resume-link a:hover {
+      background: #0066cc;
+    }
+    footer {
+      background: #00264d;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/3/39/Airplane_meal_tray.jpg" alt="Inflight Catering"/>
+    <h1>Mahesh Meshram</h1>
+    <p>Air Catering Officer | Since 2017</p>
+  </header>
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#skills">Skills</a>
+    <a href="#resume">Resume</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      I am an Air Catering Officer with extensive experience in inflight catering operations since 2017. 
+      My role involves ensuring top-quality food preparation, safety compliance, and efficient delivery for airline clients. 
+      With a focus on passenger satisfaction and operational excellence, I bring a professional and dedicated approach to aviation catering services.
+    </p>
+  </section>
+
+  <section id="experience">
+    <h2>Experience</h2>
+    <p>
+      Over 8 years of experience in inflight catering operations, coordinating with airlines, ground staff, and catering teams to ensure 
+      timely and efficient service delivery. Skilled in managing catering logistics, maintaining hygiene standards, and 
+      adhering to aviation safety protocols.
+    </p>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skills-list" id="skills-list">
+      <!-- Skills load dynamically -->
+    </div>
+  </section>
+
+  <section id="resume">
+    <h2>Resume</h2>
+    <p style="text-align:center;">
+      Download my latest resume using the link below:
+    </p>
+    <div class="resume-link">
+      <a href="Mahesh_Meshram_Resume.pdf" download>📄 Download Resume (PDF)</a>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="contact-info">
+      <a href="mailto:meshramm892@gmail.com">📧 meshramm892@gmail.com</a>
+      <a href="tel:+919665800741">📞 +91 96658 00741</a>
+      <a href="tel:+919106803127">📞 +91 91068 03127</a>
+      <a href="https://www.linkedin.com/in/mahesh-meshram-a53941177" target="_blank">🔗 LinkedIn</a>
+      <a href="https://github.com/programmwork1" target="_blank">💻 GitHub</a>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Mahesh Meshram | Designed for personal portfolio
+  </footer>
+
+  <!-- Script to load skills dynamically -->
+  <script>
+    fetch("skills.json")
+      .then(response => response.json())
+      .then(data => {
+        const skillsContainer = document.getElementById("skills-list");
+        data.skills.forEach(skill => {
+          const span = document.createElement("span");
+          span.textContent = skill;
+          skillsContainer.appendChild(span);
+        });
+      })
+      .catch(error => console.error("Error loading skills:", error));
+  </script>
+</body>
+</html>
