@@ -1,26 +1,68 @@
-// Wait until page loads
-document.addEventListener("DOMContentLoaded", () => {
-  const nav = document.querySelector(".nav-links");
+// ======================
+// Navbar Scroll Effect
+// ======================
+const navbar = document.querySelector("nav");
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 50) {
+    navbar.classList.add("solid");
+    navbar.classList.remove("transparent");
+  } else {
+    navbar.classList.add("transparent");
+    navbar.classList.remove("solid");
+  }
+});
 
-  // 🔹 Create mobile menu toggle button
-  const toggle = document.createElement("div");
-  toggle.classList.add("menu-toggle");
-  toggle.innerHTML = "☰"; // hamburger icon
-  document.querySelector(".navbar").insertBefore(toggle, nav);
+// ======================
+// Hamburger Menu Toggle
+// ======================
+const hamburger = document.querySelector(".hamburger");
+const navLinks = document.querySelector(".nav-links");
 
-  // Toggle menu open/close on click
-  toggle.addEventListener("click", () => {
-    nav.classList.toggle("active");
+if (hamburger) {
+  hamburger.addEventListener("click", () => {
+    hamburger.classList.toggle("active");
+    navLinks.classList.toggle("show");
   });
+}
 
-  // 🔹 Smooth scrolling for internal links
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener("click", function (e) {
-      e.preventDefault();
-      const target = document.querySelector(this.getAttribute("href"));
-      if (target) {
-        target.scrollIntoView({ behavior: "smooth" });
-      }
+// Close menu when clicking a link (on mobile)
+if (navLinks) {
+  navLinks.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+      hamburger.classList.remove("active");
+      navLinks.classList.remove("show");
     });
   });
+}
+
+// ======================
+// Resume Download Button
+// ======================
+const resumeBtn = document.querySelector("#downloadResume");
+if (resumeBtn) {
+  resumeBtn.addEventListener("click", () => {
+    // Change this path if your resume.pdf is stored elsewhere
+    window.open("resume.pdf", "_blank");
+  });
+}
+
+// ======================
+// Smooth Scrolling (internal links)
+// ======================
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener("click", function (e) {
+    const target = document.querySelector(this.getAttribute("href"));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    }
+  });
 });
+
+// ======================
+// Debug Info (optional)
+// ======================
+// console.log("Portfolio script.js loaded successfully ✅");
